@@ -1,4 +1,4 @@
-# rev2-companion
+# rev2-master-keyboard
 
 This project is the culmination of my obsession with using the [Prophet Rev2](https://www.sequential.com/product/prophetrev2/) synthesizer as the master MIDI keyboard in my home studio. The idea is to have the knobs on the device's panel control the device itself, while the keyboard can be "routed" to any synthesizer, including the Rev2 iself.
 
