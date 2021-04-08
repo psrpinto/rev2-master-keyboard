@@ -32,7 +32,7 @@ TODO
 - Thru Clock messages to Port A.
 
 ### Port D - Keyboard
-- Thru Note On, Note Off, Pressure, Pitch Bend, Poly Aftertouch and Modwheel to Port B
+- Thru Note On, Note Off, Pressure, Pitch Bend, Poly Aftertouch and Modwheel, Expression Pedal and Sustain Pedal to Port B
 
 ## Rev2 Global Settings
 Rev2 global settings should be set as follows:
