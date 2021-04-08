@@ -8,8 +8,8 @@ Sequential Prophet Rev2 companion using Midihub.
 - D: From Rev2
 
 ### Output ports:
-- A: Keyboard (Note On, Note Off, Pressure, Pitch Bend, Poly Aftertourch, Modwheel)
-- B: Rev2 CC (NRPN), Clock
+- A: Rev2 CC (NRPN), Clock
+- B: Keyboard (Note On, Note Off, Pressure, Pitch Bend, Poly Aftertourch, Modwheel)
 - D: To Rev2
 
 ### Virtual ports:
@@ -26,13 +26,13 @@ TODO
 
 ### Port D - CC (NRPN)
 - Thru CC (NRPN) messages on Channels 1 and 2 back to Device.
-- Thru CC (NRPN) messages on Channels 1 and 2 to Port B.
+- Thru CC (NRPN) messages on Channels 1 and 2 to Port A.
 
 ### Port D - Clock
-- Thru Clock messages to Port B.
+- Thru Clock messages to Port A.
 
 ### Port D - Keyboard
-- Thru Note On, Note Off, Pressure, Pitch Bend, Poly Aftertouch and Modwheel to Port A
+- Thru Note On, Note Off, Pressure, Pitch Bend, Poly Aftertouch and Modwheel to Port B
 
 ## Rev2 Global Settings
 Rev2 global settings should be set as follows:
