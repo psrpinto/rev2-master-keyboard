@@ -2,7 +2,7 @@
 
 This project is the culmination of my obsession with using the [Prophet Rev2](https://www.sequential.com/product/prophetrev2/) synthesizer as the master MIDI keyboard in my home studio. The idea is to have the knobs on the device's panel control the device itself, while the keyboard can be "routed" to any synthesizer, including the Rev2 iself.
 
-In essence, we use a [Midihub](https://blokas.io/midihub/) to "split" the Rev2 into two logical devices: a synthesizer with one MIDI input and one MIDI output, and a keyboard with one MIDI output:
+In essence, a [Midihub](https://blokas.io/midihub/) is used to "split" the Rev2 into two logical devices: a synthesizer with one MIDI input and one MIDI output, and a keyboard with one MIDI output:
 
 ```
         Synth
