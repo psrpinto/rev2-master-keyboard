@@ -8,6 +8,13 @@ TODO
 
 In essence, a [Midihub](https://blokas.io/midihub/) is used to "split" the Rev2 into two logical devices: a synthesizer with one MIDI input and one MIDI output, and a keyboard with one MIDI input and one MIDI output:
 
+## Keyboard control
+Input A, any channel.
+
+- CC1: Keyboard output channel
+    - Valid values: 1 to 16
+    - 0 is interpreted as 1
+    - Values greater than 16 are interpreted as 16
 
 ## Rev2 limitations
 TODO
