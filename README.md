@@ -11,7 +11,11 @@ In essence, a [Midihub](https://blokas.io/midihub/) is used to "split" the Rev2 
 ## Keyboard control
 Input A, any channel.
 
-- CC1: Keyboard output channel
+- CC1: Split A output channel
+    - Valid values: 1 to 16
+    - 0 is interpreted as 1
+    - Values greater than 16 are interpreted as 16
+- CC2: Split B output channel
     - Valid values: 1 to 16
     - 0 is interpreted as 1
     - Values greater than 16 are interpreted as 16
