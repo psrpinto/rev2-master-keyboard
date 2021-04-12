@@ -23,6 +23,8 @@ Input A, channel 16.
     - Bipolar (-64 to +63)
 - CC 4: Zone B transpose
     - Bipolar (-64 to +63)
+- CC 5: Zone B start key
+    - Bipolar (-64 to +63)
 
 ## Rev2 limitations
 TODO
