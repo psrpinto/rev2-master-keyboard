@@ -8,8 +8,8 @@ TODO
 
 In essence, a [Midihub](https://blokas.io/midihub/) is used to "split" the Rev2 into two logical devices: a synthesizer with one MIDI input and one MIDI output, and a keyboard with one MIDI input and one MIDI output:
 
-## Keyboard control
-Input A, any channel.
+## Control plane
+Input A, channel 16.
 
 - CC 1: Split A output channel
     - Valid values: 1 to 16
