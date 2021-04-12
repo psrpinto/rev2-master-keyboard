@@ -19,9 +19,9 @@ Input A, any channel.
     - Valid values: 1 to 16
     - 0 is interpreted as 1
     - Values greater than 16 are interpreted as 16
-- CC 7: Zone A transpose
+- CC 3: Zone A transpose
     - Bipolar (-64 to +63)
-- CC 10: Zone B transpose
+- CC 4: Zone B transpose
     - Bipolar (-64 to +63)
 
 ## Rev2 limitations
