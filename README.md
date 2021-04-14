@@ -8,6 +8,8 @@ In essence, a [Midihub](https://blokas.io/midihub/) hardware MIDI processor is u
 - a synthesizer with a MIDI input and a MIDI output
 - a keyboard with a MIDI input and a MIDI output
 
+![Diagram](diagram.png "Diagram")
+
 ## Features
 TODO
 
