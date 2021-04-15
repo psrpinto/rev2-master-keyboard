@@ -1,4 +1,6 @@
 # rev2-master-keyboard
+![Mood](mood.jpg "Mood")
+
 The [Prophet Rev2](https://www.sequential.com/product/prophetrev2/) is a fantastic polyphonic analog synthesizer, paired with a very capable 5-octave *[keybed](https://www.sweetwater.com/insync/keybed/)*. It also has modulation and pitch wheels, and inputs for expression and sustain pedals. For these reasons, it's a common scenario to use it to control other devices, via MIDI. However, since it wasn't designed to be used as master MIDI keyboard, it falls short in a [variety of ways](#rev2-limitations).
 
 This project is the culmination of my quest of working around these limitations so that the Rev2 can be used as a fully-featured MIDI keyboard.
