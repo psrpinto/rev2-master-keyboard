@@ -5,6 +5,11 @@ The [Prophet Rev2](https://www.sequential.com/product/prophetrev2/) is a fantast
 
 This project is the culmination of my quest of working around these limitations so that the Rev2 can be used as a fully-featured MIDI keyboard.
 
+## Features
+TODO
+
+## How it works
+
 In essence, a [Midihub](https://blokas.io/midihub/) hardware MIDI processor is used to "split" the Rev2 into two logical devices:
 
 - a synthesizer with a MIDI input and a MIDI output
@@ -12,10 +17,6 @@ In essence, a [Midihub](https://blokas.io/midihub/) hardware MIDI processor is u
 
 ![Diagram](diagram.png "Diagram")
 
-## Features
-TODO
-
-## How it works
 
 The idea is to have the knobs on the device's panel control the device itself, while the keyboard can be "routed" to any synthesizer, including the Rev2 iself.
 
