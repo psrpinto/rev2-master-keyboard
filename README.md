@@ -17,6 +17,8 @@ In essence, a [Midihub](https://blokas.io/midihub/) hardware MIDI processor is u
 
 ![Diagram](diagram.png "Diagram")
 
+## Setup
+For setup instructions go [here](setup.md).
 
 ## Rev2 limitations
 TODO
