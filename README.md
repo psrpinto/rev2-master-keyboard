@@ -12,8 +12,8 @@ TODO
 
 In essence, a [Midihub](https://blokas.io/midihub/) hardware MIDI processor is used to "split" the Rev2 into two logical devices:
 
-- a synthesizer with a MIDI input and a MIDI output
 - a keyboard with a MIDI input and a MIDI output
+- a synthesizer with a MIDI input and a MIDI output
 
 ![Diagram](diagram.png "Diagram")
 
