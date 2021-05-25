@@ -1,5 +1,5 @@
-# Setup
-TODO
+# Setup Instructions
+> This documentation is currently being improved.
 
 ## Rev2 Global Settings
 Rev2 global settings should be set as follows:
