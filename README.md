@@ -1,6 +1,6 @@
 The [Prophet Rev2](https://www.sequential.com/product/prophetrev2/) is a polyphonic analog synthesizer, paired with a 5-octave *[keybed](https://www.sweetwater.com/insync/keybed/)*. It also has modulation and pitch wheels, and inputs for expression and sustain pedals. For these reasons, it's a common scenario to use it to control other devices, via MIDI. However, since it wasn't designed to be used as master MIDI keyboard, it falls short in a [variety of ways](#rev2-limitations).
 
-This project is the culmination of my quest of working around these limitations so that the Rev2 can be used as a fully-featured master MIDI keyboard.
+Using a [Midihub](https://blokas.io/midihub), this project works around these limitations, so that the Rev2 can be used as a fully-featured master MIDI keyboard.
 
 ---
 
