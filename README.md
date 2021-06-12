@@ -40,29 +40,69 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 # Zones
 > This section is yet to be written.
 
-# Control plane
-> This section is currently being improved.
+# Control Plane
+This section describes how to control various parameters of the Midihub's patch, through MIDI CC messages sent to Midihub's Input A. By default, **only messages sent on channel 16 are considered**, messages on any other channel are dropped. However, the channel can easily be changed through Midihub's editor.
 
-Input A, channel 16.
+## Zone A MIDI Channel (CC1)
+Values of an initialized patch are indicated as **default**.
 
-- CC 1: Zone A output channel
-    - Valid values: 1 to 16
-    - 0 is interpreted as 1
-    - Values greater than 16 are interpreted as 16
-- CC 2: Zone B output channel
-    - Valid values: 1 to 16
-    - 0 is interpreted as 1
-    - Values greater than 16 are interpreted as 16
-- CC 3: Zone A octave
-    - 0 to 8, bipolar
-    - Values greater than 8 are interpreted as 8
-    - 4 is "center"
-- CC 4: Zone B octave
-    - 0 to 8, bipolar
-    - Values greater than 8 are interpreted as 8
-    - 4 is "center"
-- CC 5: Zone B start key
-    - -64 to +63, bipolar
+| CC1 Value | Zone A MIDI Channel ||
+|:---------:|:-------------------:|-|
+| 0, **1**  | **1**               | **default** |
+| 2         | 2                   ||
+| 3         | 3                   ||
+| ...       | ...                 ||
+| 16 - 127  | 16                  ||
+
+## Zone B MIDI Channel (CC2)
+Values of an initialized patch are indicated as **default**.
+
+| CC2 Value | Zone B MIDI Channel ||
+|:---------:|:--------------------:|-|
+| 0, **1**  | **1**               | **default** |
+| 2         | 2                   |
+| 3         | 3                   |
+| ...       | ...                 |
+| 16 - 127  | 16                  |
+
+## Zone A Octave (CC3)
+Values of an initialized patch are indicated as **default**. The *first-key note* is the note of the 1st key on the keyboard, starting from the left.
+
+| CC3 Value | Zone A Octave | First-key Note ||
+|:---------:|:-------------:|:--------------:|-|
+| 0         | -4            | C-2            ||
+| 1         | -3            | C-1            ||
+| 2         | -2            | C0             ||
+| **3**     | **+0**        | **C1**         | **default** |
+| 4         | +1            | C2             |
+| 5         | +2            | C3             |
+| 6         | +3            | C4             |
+| 7 -127    | +4            | C5             |
+
+## Zone B Octave (CC4)
+Values of an initialized patch are indicated as **default**. *First-key note* is the note of the 1st key on the keyboard, starting from the left. The values presented here assume Zone B is occupying the totality of the keyboard. Note that if Zone A is active, it will occupy part of the keyboard. You can use [CC5](#zone-b-start-key-cc5) to control where on the keyboard Zone B starts.
+
+| CC4 Value | Zone B Octave | First-key Note ||
+|:---------:|:-------------:|:--------------:|-|
+| 0         | -4            | C-2            ||
+| 1         | -3            | C-1            ||
+| 2         | -2            | C0             ||
+| **3**     | **+0**        | **C1**         | **default** |
+| 4         | +1            | C2             |
+| 5         | +2            | C3             |
+| 6         | +3            | C4             |
+| 7 -127    | +4            | C5             |
+
+
+## Zone B Start Key (CC5)
+
+| CC5 Value | Zone B Start Key |
+|:---------:|:----------------:|
+| 0 - 39    | First C (1st white key |
+| 40        | First D (2nd white key) |
+| ...       | ...              |
+| 62        | Second B (14th white key) |
+| **63**    | **Third C (15th white key)** |
 
 # Rev2 limitations
 This section documents some of the Rev2's limitations.
