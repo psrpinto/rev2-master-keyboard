@@ -53,12 +53,16 @@ Input A, channel 16.
     - Valid values: 1 to 16
     - 0 is interpreted as 1
     - Values greater than 16 are interpreted as 16
-- CC 3: Zone A transpose
-    - Bipolar (-64 to +63)
-- CC 4: Zone B transpose
-    - Bipolar (-64 to +63)
+- CC 3: Zone A octave
+    - 0 to 8, bipolar
+    - Values greater than 8 are interpreted as 8
+    - 4 is "center"
+- CC 4: Zone B octave
+    - 0 to 8, bipolar
+    - Values greater than 8 are interpreted as 8
+    - 4 is "center"
 - CC 5: Zone B start key
-    - Bipolar (-64 to +63)
+    - -64 to +63, bipolar
 
 # Rev2 limitations
 This section documents some of the Rev2's limitations.
