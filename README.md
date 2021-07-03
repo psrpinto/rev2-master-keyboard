@@ -104,8 +104,8 @@ Values of an initialized patch are indicated as **default**.
 |:---------:|:-----------------:|:-----------------:|-|
 | 0, 1      | 1st C             | *Zone A disabled* ||
 | 2         | 2nd C             |||
-| **3**     | **3rd C**         || **default** |
-| 4         | 4th C             ||
+| 3         | 3rd C             |||
+| **4**     | **4th C**         || **default** |
 | 5         | 5th C             ||
 | 6         | 6th C             ||
 | 7 - 127   | *NA*              | *Zone B disabled* |
