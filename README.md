@@ -8,6 +8,7 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 1. [Setup Instructions](setup.md)
 1. [How it Works](how.md)
 1. [Summary of Features](#features)
+1. [Usage](#usage)
 1. [Zones](#zones)
 1. [Control Plane](#control-plane)
 1. [Rev2 Limitations](#rev2-limitations)
@@ -36,6 +37,9 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
     - **Zones** can be transposed independently, e.g. transpose zone A by -2 octaves, and zone B by +1 octave
 - **Keyboard** can be [controlled](#control-plane) through MIDI CC on **MIDI INPUT A**, e.g. **Zone** split point
 - **Synth** accepts MIDI input on **MIDI INPUT C**
+
+# Usage
+> This section is yet to be written.
 
 # Zones
 > This section is yet to be written.
