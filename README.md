@@ -74,9 +74,9 @@ Values of an initialized patch are indicated as **default**. The *first-key note
 
 | CC3 Value | Zone A Octave | First-key Note ||
 |:---------:|:-------------:|:--------------:|-|
-| 0         | -4            | C-2            ||
-| 1         | -3            | C-1            ||
-| 2         | -2            | C0             ||
+| 0         | -3            | C-2            ||
+| 1         | -2            | C-1            ||
+| 2         | -1            | C0             ||
 | **3**     | **+0**        | **C1**         | **default** |
 | 4         | +1            | C2             |
 | 5         | +2            | C3             |
@@ -88,9 +88,9 @@ Values of an initialized patch are indicated as **default**. *First-key note* is
 
 | CC4 Value | Zone B Octave | First-key Note ||
 |:---------:|:-------------:|:--------------:|-|
-| 0         | -4            | C-2            ||
-| 1         | -3            | C-1            ||
-| 2         | -2            | C0             ||
+| 0         | -3            | C-2            ||
+| 1         | -2            | C-1            ||
+| 2         | -1            | C0             ||
 | **3**     | **+0**        | **C1**         | **default** |
 | 4         | +1            | C2             |
 | 5         | +2            | C3             |
