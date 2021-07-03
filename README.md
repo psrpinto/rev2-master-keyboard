@@ -81,10 +81,10 @@ Values of an initialized patch are indicated as **default**. The *first-key note
 | 4         | +1            | C2             |
 | 5         | +2            | C3             |
 | 6         | +3            | C4             |
-| 7 -127    | +4            | C5             |
+| 7 - 127   | +4            | C5             |
 
 ## Zone B Octave (CC4)
-Values of an initialized patch are indicated as **default**. *First-key note* is the note of the 1st key on the keyboard, starting from the left. The values presented here assume Zone B is occupying the totality of the keyboard. Note that if Zone A is active, it will occupy part of the keyboard. You can use [CC5](#zone-b-start-key-cc5) to control where on the keyboard Zone B starts.
+Values of an initialized patch are indicated as **default**. *First-key note* is the note of the 1st key on the keyboard, starting from the left. Note than with an initialized patch, the first-key is on Layer A. You can use [CC5](#zone-b-start-key-cc5) to control where on the keyboard Zone B starts.
 
 | CC4 Value | Zone B Octave | First-key Note ||
 |:---------:|:-------------:|:--------------:|-|
@@ -95,18 +95,20 @@ Values of an initialized patch are indicated as **default**. *First-key note* is
 | 4         | +1            | C2             |
 | 5         | +2            | C3             |
 | 6         | +3            | C4             |
-| 7 -127    | +4            | C5             |
-
+| 7 - 127   | +4            | C5             |
 
 ## Zone B Start Key (CC5)
+Values of an initialized patch are indicated as **default**.
 
-| CC5 Value | Zone B Start Key |
-|:---------:|:----------------:|
-| 0 - 39    | First C (1st white key |
-| 40        | First D (2nd white key) |
-| ...       | ...              |
-| 62        | Second B (14th white key) |
-| **63**    | **Third C (15th white key)** |
+| CC5 Value | Zone B Start Key  | Disabled status   ||
+|:---------:|:-----------------:|:-----------------:|-|
+| 0, 1      | 1st C             | *Zone A disabled* ||
+| 2         | 2nd C             |||
+| **3**     | **3rd C**         || **default** |
+| 4         | 4th C             ||
+| 5         | 5th C             ||
+| 6         | 6th C             ||
+| 7 - 127   | *NA*              | *Zone B disabled* |
 
 # Rev2 limitations
 This section documents some of the Rev2's limitations.
