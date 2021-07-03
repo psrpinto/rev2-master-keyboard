@@ -108,6 +108,14 @@ Values of an initialized patch are indicated as **default**.
 | 4         | 4th C             |
 | 5 - 127   | 5th C             |
 
+## Zone B Enable/Disable (CC6)
+Values of an initialized patch are indicated as **default**.
+
+| CC6 Value | Zone B status       ||
+|:---------:|:-------------------:|-|
+| **0**     | **Zone B Disabled** |**default** |
+| 1 - 127   | Zone B Enabled      |
+
 # Rev2 limitations
 This section documents some of the Rev2's limitations.
 
