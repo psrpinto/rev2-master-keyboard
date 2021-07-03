@@ -30,7 +30,7 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
     - CC (NRPN)
     - Clock
     - Program Change
-- **Knobs** operate as if `Local control` would be `On`
+- **Knobs** operate as if `Local control` would be `On`, i.e. they control the **Synth**
 - [**Keyboard zones**](#zones)
     - **Keyboard** can be split into **zones A and B**, which are independent of the **Synth**'s layers
     - **Zones** can be assigned to different MIDI channels, independently of the channels the **Synth** operates on
