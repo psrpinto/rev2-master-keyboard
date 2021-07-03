@@ -100,15 +100,13 @@ Values of an initialized patch are indicated as **default**. *First-key note* is
 ## Zone B Start Key (CC5)
 Values of an initialized patch are indicated as **default**.
 
-| CC5 Value | Zone B Start Key  | Disabled status   ||
-|:---------:|:-----------------:|:-----------------:|-|
-| 0, 1      | 1st C             | *Zone A disabled* ||
-| 2         | 2nd C             |||
-| 3         | 3rd C             |||
-| **4**     | **4th C**         || **default** |
-| 5         | 5th C             ||
-| 6         | 6th C             ||
-| 7 - 127   | *NA*              | *Zone B disabled* |
+| CC5 Value | Zone B Start Key  ||
+|:---------:|:-----------------:|-|
+| 0, 1      | 1st C             | *Zone A is disabled* |
+| 2         | 2nd C             ||
+| **3**     | **3rd C**         | **default** |
+| 4         | 4th C             |
+| 5 - 127   | 5th C             |
 
 # Rev2 limitations
 This section documents some of the Rev2's limitations.
