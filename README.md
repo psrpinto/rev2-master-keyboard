@@ -63,8 +63,8 @@ Values of an initialized patch are indicated as **default**.
 
 | CC2 Value | Zone B MIDI Channel ||
 |:---------:|:--------------------:|-|
-| 0, **1**  | **1**               | **default** |
-| 2         | 2                   |
+| 0, 1      | 1                   ||
+| **2**     | **2**               |**default**|
 | 3         | 3                   |
 | ...       | ...                 |
 | 16 - 127  | 16                  |
