@@ -6,7 +6,7 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 
 # Table of Contents
 1. [How it Works](how.md)
-1. [Summary of Features](#features)
+1. [Features](#features)
 1. [Setup Instructions](setup.md)
 1. [Usage](#usage)
 1. [Zones](#zones)
