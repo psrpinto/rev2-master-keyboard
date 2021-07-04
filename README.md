@@ -1,4 +1,4 @@
-The [Prophet Rev2](https://www.sequential.com/product/prophetrev2/) is a polyphonic analog synthesizer, paired with a 5-octave *[keybed](https://www.sweetwater.com/insync/keybed/)*. It also has modulation and pitch wheels, and inputs for expression and sustain pedals. For these reasons, it's a common scenario to use it to control other devices, via MIDI. However, since it wasn't designed to be used as master MIDI keyboard, it falls short in a [variety of ways](#rev2-limitations).
+The [Prophet Rev2](https://www.sequential.com/product/prophetrev2/) is a polyphonic analog synthesizer, paired with a 5-octave keyboard. It also has modulation and pitch wheels, and inputs for expression and sustain pedals. For these reasons, it's a common scenario to use it to control other devices, via MIDI. However, since it wasn't designed to be used as master MIDI keyboard, it falls short in a [variety of ways](#rev2-limitations).
 
 Using a [Midihub](https://blokas.io/midihub), this project works around these limitations, so that the Rev2 can be used as a fully-featured master MIDI keyboard.
 
@@ -10,6 +10,7 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 1. [Summary of Features](#features)
 1. [Usage](#usage)
 1. [Zones](#zones)
+1. [Caveat](#caveat)
 1. [Control Plane](#control-plane)
 1. [Rev2 Limitations](#rev2-limitations)
 
@@ -41,11 +42,29 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 # Usage
 > This section is yet to be written.
 
+- Assuming setup is done, you know have a master MIDI keyboard AND a Rev2. They don't talk to eachother unless you set that up.
+- Only Zone A is active
+- Standalone mode
+- Controlling through MIDI CC
+- Set MIDI channel
+- Initialized patch
+
 # Zones
-> This section is yet to be written.
+The Keyboard can be split into two **Zones** (Zone A and Zone B), which are unrelated and operate completely independently of the Synth's *Splits*. In fact, the Rev's feature of splitting the keyboard into two *Splits* is no longer used, with Zones being implemented solely on the Midihub. This gives us the flexibility to, for example, change the octave of each Zone independently, a feature the Rev2 does not provide.
+
+In practice, this means the `Split A|B` button on the device's panel continues to work as expected in what concerns the synth's *Layers*, but has no effect whatsoever on the keyboard. Instead, Zones are configured through the [Control Plane](#control-plane).
+
+On an initialized patch, only Zone A is enabled and it occupies the totality of the keyboard. Once Zone B is [enabled](#zone-b-enabledisable-cc6), it occupies the right side of keyboard, starting at the 3rd C note. Zone B's Start Key (i.e. the split point), can too be configured through the Control Plane.
+
+# Caveat
+At the moment there's one limitation that cannot be worked around: the Rev2 must be set to send and receive NRPN instead of CC, i.e. both the `MIDI Param Send` and `MIDI Param Rcv` settings must be set to NRPN. See [here](#lfo-and-other-parameters-not-sent-in-cc-mode) for why this is the case.
+
+This means, the *Synth* (`OUT C`) will output NRPN, and will only accept NRPN as input (`IN C`). This can be limiting when using the Rev2 with other gear, since most do not support NRPN. For example, you won't be able to automate the filter cutoff frequency with an external sequencer that does not support NRPN, which is the case with many sequencers.
+
+However, there are [plans](https://community.blokas.io/t/convert-cc-to-nrpn/2359/2) to add NRPN-to-CC conversion to the Midihub, which would likely allow this limitation to be addressed.
 
 # Control Plane
-This section describes how to control various parameters of the Midihub's patch, through MIDI CC messages sent to Midihub's Input A. By default, **only messages sent on channel 16 are considered**, messages on any other channel are dropped. However, the channel can easily be changed through Midihub's editor.
+You can control various parameters of the Midihub's patch through MIDI CC messages sent to Midihub's Input A. By default, **only messages sent on channel 16 are considered**, messages on any other channel are dropped. However, the channel can easily be changed through Midihub's editor.
 
 ## Zone A MIDI Channel (CC1)
 Values of an initialized patch are indicated as **default**.
@@ -117,9 +136,10 @@ Values of an initialized patch are indicated as **default**.
 | 1 - 127   | Zone B Enabled      |
 
 # Rev2 limitations
-This section documents some of the Rev2's limitations.
+This section documents some of the Rev2's limitations, some of which are addressed by this project.
 
 ## No hybrid Local Control mode
+It's not possible to have the knobs control the device, while the keyboard just sends MIDI. If it would be, this project would probably not need to exist, or its scope would be significantly reduced.
 
 ## LFO and other parameters not sent in CC mode
 With `Local Control` set to `Off` and `MIDI Param Send` set to `CC`, for many of the Rev2's parameters, no MIDI message is triggered when the parameter changes. This is because there are more than 127 parameters in the Rev2. Setting `MIDI Param Send` to `NRPN` fixes this issue.
