@@ -1,6 +1,6 @@
 The [Prophet Rev2](https://www.sequential.com/product/prophetrev2/) is a polyphonic analog synthesizer, paired with a 5-octave keyboard. It also has modulation and pitch wheels, and inputs for expression and sustain pedals. For these reasons, it's a common scenario to use it to control other devices, via MIDI. However, since it wasn't designed to be used as master MIDI keyboard, it falls short in a [variety of ways](#rev2-limitations).
 
-Using a [Midihub](https://blokas.io/midihub), this project works around these limitations, so that the Rev2 can be used as a fully-featured master MIDI keyboard.
+Using a [Midihub](https://blokas.io/midihub), this project works around these limitations, so that the Rev2 can be used as a **master MIDI keyboard**.
 
 ---
 
@@ -64,9 +64,11 @@ This means, the *Synth* (`OUT C`) will output NRPN, and will only accept NRPN as
 However, there are [plans](https://community.blokas.io/t/convert-cc-to-nrpn/2359/2) to add NRPN-to-CC conversion to the Midihub, which would likely allow this limitation to be addressed.
 
 # Control Plane
-You can control various parameters of the Midihub's patch through MIDI CC messages sent to Midihub's Input A. By default, **only messages sent on channel 16 are considered**, messages on any other channel are dropped. However, the channel can easily be changed through Midihub's editor.
+You can control various parameters of the Midihub's patch through MIDI CC messages sent to `IN A`. By default, **only messages sent on channel 16 are considered**, messages on any other channel are dropped. However, the channel can easily be changed through Midihub's editor.
 
 ## Zone A MIDI Channel (CC1)
+Set the MIDI Channel of messages produced by Zone A.
+
 Values of an initialized patch are indicated as **default**.
 
 | CC1 Value | Zone A MIDI Channel ||
@@ -78,6 +80,8 @@ Values of an initialized patch are indicated as **default**.
 | 16 - 127  | 16                  ||
 
 ## Zone B MIDI Channel (CC2)
+Set the MIDI Channel of messages produced by Zone B.
+
 Values of an initialized patch are indicated as **default**.
 
 | CC2 Value | Zone B MIDI Channel ||
@@ -89,7 +93,9 @@ Values of an initialized patch are indicated as **default**.
 | 16 - 127  | 16                  |
 
 ## Zone A Octave (CC3)
-Values of an initialized patch are indicated as **default**. The *first-key note* is the note of the 1st key on the keyboard, starting from the left.
+Transpose Zone A up or down N octaves.
+
+Values of an initialized patch are indicated as **default**. The *first-key note* is the note produced by the 1st key on the keyboard, starting from the left.
 
 | CC3 Value | Zone A Octave | First-key Note ||
 |:---------:|:-------------:|:--------------:|-|
@@ -103,7 +109,9 @@ Values of an initialized patch are indicated as **default**. The *first-key note
 | 7 - 127   | +4            | C5             |
 
 ## Zone B Octave (CC4)
-Values of an initialized patch are indicated as **default**. *First-key note* is the note of the 1st key on the keyboard, starting from the left. Note than with an initialized patch, the first-key is on Layer A. You can use [CC5](#zone-b-start-key-cc5) to control where on the keyboard Zone B starts.
+Transpose Zone B up or down N octaves.
+
+Values of an initialized patch are indicated as **default**. *First-key note* is the note produced by the 1st key on the keyboard, starting from the left. Note than with an initialized patch, the first-key is on Layer A. You can use [CC5](#zone-b-start-key-cc5) to control where on the keyboard Zone B starts.
 
 | CC4 Value | Zone B Octave | First-key Note ||
 |:---------:|:-------------:|:--------------:|-|
@@ -117,6 +125,8 @@ Values of an initialized patch are indicated as **default**. *First-key note* is
 | 7 - 127   | +4            | C5             |
 
 ## Zone B Start Key (CC5)
+Set the key on the keyboard from which Zone B starts, inclusively. In other words, it's the split point between Zones A and B.
+
 Values of an initialized patch are indicated as **default**.
 
 | CC5 Value | Zone B Start Key  ||
@@ -128,6 +138,8 @@ Values of an initialized patch are indicated as **default**.
 | 5 - 127   | 5th C             |
 
 ## Zone B Enable/Disable (CC6)
+Enable or disable Zone B. When disabled, all keys on the keyboard are assigned to Zone A.
+
 Values of an initialized patch are indicated as **default**.
 
 | CC6 Value | Zone B status       ||
