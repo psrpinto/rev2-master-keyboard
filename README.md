@@ -14,7 +14,7 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 1. [Setup Instructions](setup.md)
 1. [Usage](#usage)
 1. [Zones](#zones)
-1. [Caveat](#caveat)
+1. [Caveats](#caveats)
 1. [Control Plane](#control-plane)
 1. [Rev2 Limitations](#rev2-limitations)
 
@@ -52,24 +52,30 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 - Initialized patch
 
 # Zones
-The Keyboard can be split into two **Zones** (Zone A and Zone B), which are unrelated and operate completely independently of the Synth's *Splits*. In fact, the Rev's feature of splitting the keyboard into two *Splits* is no longer used, with Zones being implemented solely on the Midihub. This gives us the flexibility to, for example, change the octave of each Zone independently, a feature the Rev2 does not provide.
+The Keyboard can be split into two **Zones** (A and B), which are unrelated and operate completely independently of the Synth's *splits*. In fact, the Rev2's feature of splitting the keyboard into two *splits* is no longer used, with Zones being implemented solely on the Midihub. This gives us the flexibility to, for example, change the octave of each Zone independently, a feature the Rev2 does not provide.
 
-In practice, this means the `Split A|B` button on the device's panel continues to work as expected in what concerns the synth's *Layers*, but has no effect whatsoever on the keyboard. Instead, Zones are configured through the [Control Plane](#control-plane).
+In practice, this means the `Split A|B` button on the device's panel continues to work as expected in what concerns the Synth's *layers*, but has no effect whatsoever on the keyboard. When the `Split A|B` button is lit, each layer continues to be addressable through `MIDI IN C`, on the channels you've previously [configured](setup.md#changing-the-rev2s-midi-channel). This is also the case when the `Stack A|B` button is lit.
+
+Instead, Zones are configured through the [Control Plane](#control-plane).
 
 On an initialized patch, only Zone A is enabled and it occupies the totality of the keyboard. Once Zone B is [enabled](#zone-b-enabledisable-cc6), it occupies the right side of keyboard, starting at the 3rd C note. Zone B's Start Key (i.e. the split point), can also be configured through the Control Plane.
 
-# Caveat
-At the moment there's one limitation that cannot be worked around: the Rev2 must be set to send and receive NRPN instead of CC, i.e. both the `MIDI Param Send` and `MIDI Param Rcv` settings must be set to NRPN. See [here](#lfo-and-other-parameters-not-sent-in-cc-mode) for why this is the case.
+# Caveats
+## Multimode
+When working with Rev2 patches which use both layers, `Multimode` must be enabled. Multimode splits voices between layers even when only layer A is active. Is this true?
 
-This means, the Synth (`OUT C`) will output NRPN, and will only accept NRPN as input (`IN C`). This can be limiting when using the Rev2 with other gear, since most do not support NRPN. For example, you won't be able to automate the filter cutoff frequency with an external sequencer that does not support NRPN, which is the case with many sequencers.
+## NRPN
+The Rev2 must be set to send and receive NRPN instead of CC, i.e. both the `MIDI Param Send` and `MIDI Param Rcv` settings must be set to NRPN. See [here](#lfo-and-other-parameters-not-sent-in-cc-mode) for why this is the case.
+
+This means, the Synth (`OUT C`) will output NRPN, and will only accept NRPN as input (`MIDI IN C`). This can be limiting when using the Rev2 with other gear, since most do not support NRPN. For example, you won't be able to automate the filter cutoff frequency with an external sequencer that does not support NRPN, which is the case with many sequencers.
 
 However, there are [plans](https://community.blokas.io/t/convert-cc-to-nrpn/2359/2) to add NRPN-to-CC conversion to the Midihub, which would likely allow this limitation to be addressed.
 
 # Control Plane
-You can control various parameters of the Midihub's patch through MIDI CC messages sent to `IN A`. By default, **only messages sent on channel 16 are considered**, messages on any other channel are dropped. However, the channel can easily be changed through Midihub's editor.
+You can control various parameters of the Midihub's patch through MIDI CC messages sent to `MIDI IN A`. By default, **only messages sent on channel 16 are considered**, messages on any other channel are dropped. However, the channel can easily be changed through Midihub's editor.
 
 ## Zone A MIDI Channel (CC1)
-Set the MIDI Channel of messages produced by Zone A.
+Set the MIDI Channel of messages produced by Zone A. Note this does **not** control the channel of the Synth's Layer A, that's still configurable through the Rev2's settings. Note that if you do change the channel the Rev2 operates on, will also need to adjust it accordingly in the Midihub's patch. 
 
 Values of an initialized patch are indicated as **default**.
 
@@ -153,10 +159,13 @@ Values of an initialized patch are indicated as **default**.
 This section documents some of the Rev2's limitations, some of which are addressed by this project.
 
 ## No hybrid Local Control mode
-It's not possible to have the knobs control the device, while the keyboard just sends MIDI. If it would be, this project would probably not need to exist, or its scope would be significantly reduced.
+It's not possible to have the knobs control the device, while the keyboard just sends MIDI. If it would, this project would probably not need to exist, or its scope would be significantly reduced.
 
 ## LFO and other parameters not sent in CC mode
 With `Local Control` set to `Off` and `MIDI Param Send` set to `CC`, for many of the Rev2's parameters, no MIDI message is triggered when the parameter changes. This is because there are more than 127 parameters in the Rev2. Setting `MIDI Param Send` to `NRPN` fixes this issue.
+
+## Multimode splits voices between layers even in single-layer patches
+Is this true?
 
 ## Program Change in Multimode
 With `Local Control` set to `Off`, and `Multimode` set to `On`, Program Change messages triggered by the Program and Bank knobs are only sent to Layer A's MIDI channel, i.e. they aren't duplicated to Layer B's MIDI channel. In a setting where these messages are re-routed back to the Rev2, this causes Layer A's Program to change, while Layer B's Program remains unchanged.
