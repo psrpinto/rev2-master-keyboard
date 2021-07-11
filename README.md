@@ -1,6 +1,6 @@
 # rev2-master-keyboard
 
-The [Prophet Rev2](https://www.sequential.com/product/prophetrev2/) is a polyphonic analog synthesizer, paired with a 5-octave keyboard. It also has modulation and pitch wheels, and inputs for expression and sustain pedals. For these reasons, it's a common scenario to use it to control other devices, via MIDI. However, since it wasn't designed to be used as master MIDI keyboard, it falls short in a [variety of ways](#rev2-limitations).
+The [Prophet Rev2](https://www.sequential.com/product/prophetrev2/) is a polyphonic analog synthesizer, paired with a 5-octave keyboard. It also has modulation and pitch wheels, and inputs for expression and sustain pedals. For these reasons, it's a common scenario to use it to control other devices, via MIDI. However, since it wasn't designed to be used as master MIDI keyboard, it falls short in a [variety of ways](rev2-limitations.md).
 
 Using a [Midihub](https://blokas.io/midihub), this project works around these limitations, so that the Rev2 can be used as a **master MIDI keyboard**.
 
@@ -16,7 +16,7 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 1. [Zones](#zones)
 1. [Caveats](#caveats)
 1. [Control Plane](#control-plane)
-1. [Rev2 Limitations](#rev2-limitations)
+1. [Rev2 Limitations](rev2-limitations.md)
 
 # Features
 
@@ -56,16 +56,16 @@ The Keyboard can be split into two **Zones** (A and B), which are unrelated and 
 
 In practice, this means the `Split A|B` button on the device's panel continues to work as expected in what concerns the Synth's *layers*, but has no effect whatsoever on the keyboard. When the `Split A|B` button is lit, each layer continues to be addressable through `MIDI IN C`, on the channels you've previously [configured](setup.md#changing-the-rev2s-midi-channel). This is also the case when the `Stack A|B` button is lit.
 
-Instead, Zones are configured through the [Control Plane](#control-plane).
+You can configure Zones through the [Control Plane](#control-plane).
 
-On an initialized patch, only Zone A is enabled and it occupies the totality of the keyboard. Once Zone B is [enabled](#zone-b-enabledisable-cc6), it occupies the right side of keyboard, starting at the 3rd C note. Zone B's Start Key (i.e. the split point), can also be configured through the Control Plane.
+On an initialized patch, only zone A is enabled, and it occupies the totality of the keyboard. Once zone B is [enabled](#zone-b-enabledisable-cc6), it occupies the right side of the keyboard, starting at the 3rd C note. Zone B's Start Key (i.e. the split point), can also be configured through the Control Plane.
 
 # Caveats
 ## Multimode
 When working with Rev2 patches which use both layers, `Multimode` must be enabled. Multimode splits voices between layers even when only layer A is active. Is this true?
 
 ## NRPN
-The Rev2 must be set to send and receive NRPN instead of CC, i.e. both the `MIDI Param Send` and `MIDI Param Rcv` settings must be set to NRPN. See [here](#lfo-and-other-parameters-not-sent-in-cc-mode) for why this is the case.
+The Rev2 must be set to send and receive NRPN instead of CC, i.e. both the `MIDI Param Send` and `MIDI Param Rcv` settings must be set to NRPN. See [here](rev2-limitations.md#lfo-and-other-parameters-not-sent-in-cc-mode) for why this is the case.
 
 This means, the Synth (`OUT C`) will output NRPN, and will only accept NRPN as input (`MIDI IN C`). This can be limiting when using the Rev2 with other gear, since most do not support NRPN. For example, you won't be able to automate the filter cutoff frequency with an external sequencer that does not support NRPN, which is the case with many sequencers.
 
@@ -154,18 +154,3 @@ Values of an initialized patch are indicated as **default**.
 |:---------:|:-------------------:|-|
 | **0**     | **Zone B Disabled** |**default** |
 | 1 - 127   | Zone B Enabled      |
-
-# Rev2 limitations
-This section documents some of the Rev2's limitations, some of which are addressed by this project.
-
-## No hybrid Local Control mode
-It's not possible to have the knobs control the device, while the keyboard just sends MIDI. If it would, this project would probably not need to exist, or its scope would be significantly reduced.
-
-## LFO and other parameters not sent in CC mode
-With `Local Control` set to `Off` and `MIDI Param Send` set to `CC`, for many of the Rev2's parameters, no MIDI message is triggered when the parameter changes. This is because there are more than 127 parameters in the Rev2. Setting `MIDI Param Send` to `NRPN` fixes this issue.
-
-## Multimode splits voices between layers even in single-layer patches
-Is this true?
-
-## Program Change in Multimode
-With `Local Control` set to `Off`, and `Multimode` set to `On`, Program Change messages triggered by the Program and Bank knobs are only sent to Layer A's MIDI channel, i.e. they aren't duplicated to Layer B's MIDI channel. In a setting where these messages are re-routed back to the Rev2, this causes Layer A's Program to change, while Layer B's Program remains unchanged.
