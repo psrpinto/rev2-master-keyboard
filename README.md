@@ -4,6 +4,8 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 
 ---
 
+![Mood](mood.jpg "Mood")
+
 # Table of Contents
 1. [How it Works](how.md)
 1. [Features](#features)
@@ -13,8 +15,6 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 1. [Caveat](#caveat)
 1. [Control Plane](#control-plane)
 1. [Rev2 Limitations](#rev2-limitations)
-
-![Mood](mood.jpg "Mood")
 
 # Features
 
@@ -54,12 +54,12 @@ The Keyboard can be split into two **Zones** (Zone A and Zone B), which are unre
 
 In practice, this means the `Split A|B` button on the device's panel continues to work as expected in what concerns the synth's *Layers*, but has no effect whatsoever on the keyboard. Instead, Zones are configured through the [Control Plane](#control-plane).
 
-On an initialized patch, only Zone A is enabled and it occupies the totality of the keyboard. Once Zone B is [enabled](#zone-b-enabledisable-cc6), it occupies the right side of keyboard, starting at the 3rd C note. Zone B's Start Key (i.e. the split point), can too be configured through the Control Plane.
+On an initialized patch, only Zone A is enabled and it occupies the totality of the keyboard. Once Zone B is [enabled](#zone-b-enabledisable-cc6), it occupies the right side of keyboard, starting at the 3rd C note. Zone B's Start Key (i.e. the split point), can also be configured through the Control Plane.
 
 # Caveat
 At the moment there's one limitation that cannot be worked around: the Rev2 must be set to send and receive NRPN instead of CC, i.e. both the `MIDI Param Send` and `MIDI Param Rcv` settings must be set to NRPN. See [here](#lfo-and-other-parameters-not-sent-in-cc-mode) for why this is the case.
 
-This means, the *Synth* (`OUT C`) will output NRPN, and will only accept NRPN as input (`IN C`). This can be limiting when using the Rev2 with other gear, since most do not support NRPN. For example, you won't be able to automate the filter cutoff frequency with an external sequencer that does not support NRPN, which is the case with many sequencers.
+This means, the Synth (`OUT C`) will output NRPN, and will only accept NRPN as input (`IN C`). This can be limiting when using the Rev2 with other gear, since most do not support NRPN. For example, you won't be able to automate the filter cutoff frequency with an external sequencer that does not support NRPN, which is the case with many sequencers.
 
 However, there are [plans](https://community.blokas.io/t/convert-cc-to-nrpn/2359/2) to add NRPN-to-CC conversion to the Midihub, which would likely allow this limitation to be addressed.
 
