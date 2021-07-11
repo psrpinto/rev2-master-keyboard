@@ -33,11 +33,11 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
     - Program Change
 - **Knobs** operate as if `Local control` would be `On`, i.e. they control the **Synth**
 - [**Keyboard zones**](#zones)
-    - **Keyboard** can be split into **zones A and B**, which are independent of the **Synth**'s layers
-    - **Zones** can be assigned to different MIDI channels, independently of the channels the **Synth** operates on
-    - **Zones** can be transposed independently, e.g. transpose zone A by -2 octaves, and zone B by +1 octave
-- **Keyboard** can be [controlled](#control-plane) through MIDI CC on **MIDI INPUT A**, e.g. **Zone** split point
-- **Synth** accepts MIDI input on **MIDI INPUT C**
+    - Split the **Keyboard** into **zones A and B**, independently of the **Synth**'s layers
+    - Assign **Zones** to different MIDI channels, independently of the channels the **Synth** operates on
+    - Transpose each **Zone** independently, e.g. transpose Zone A by -2 octaves, and Zone B by +1 octave
+- [Control](#control-plane) the **Keyboard** through MIDI CC on **MIDI INPUT A**, e.g. **Zone** split point
+- Send MIDI to the **Synth** on **MIDI INPUT C**
 
 # Usage
 > This section is yet to be written.
