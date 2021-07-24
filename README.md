@@ -20,26 +20,15 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 
 # Features
 
-- Use the Rev2 as if it were two independent devices: a **Keyboard** and a **Synth**
-- **Keyboard** outputs on **MIDI OUT A**
-    - Note On
-    - Note Off
-    - Modulation Wheel
-    - Pitch Wheel
-    - Channel Pressure (*Aftertouch*)
-    - Expression Pedal
-    - Sustain Pedal
-- **Synth** outputs on **MIDI OUT C**
-    - CC (NRPN)
-    - Clock
-    - Program Change
+- Split MIDI related to the **Keyboard** into its own MIDI channel, independent of the **Synth**'s channel
+- [**Control**](#control-plane) the **Keyboard**'s MIDI channel, [**Zones**](#zones) and other parameters through MIDI CC
 - **Knobs** operate as if `Local control` would be `On`, i.e. they control the **Synth**
-- [**Keyboard zones**](#zones)
+- [**Zones**](#zones)
     - Split the **Keyboard** into **zones A and B**, independently of the **Synth**'s layers
     - Assign **Zones** to different MIDI channels, independently of the channels the **Synth** operates on
     - Transpose each **Zone** independently, e.g. transpose Zone A by -2 octaves, and Zone B by +1 octave
-- [Control](#control-plane) the **Keyboard** through MIDI CC on **MIDI INPUT A**, e.g. **Zone** split point
-- Send MIDI to the **Synth** on **MIDI INPUT C**
+
+![Diagram](diagram.png "Diagram")
 
 # Usage
 > This section is yet to be written.
@@ -54,7 +43,7 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 # Zones
 The Keyboard can be split into two **Zones** (A and B), which are unrelated and operate completely independently of the Synth's *splits*. In fact, the Rev2's feature of splitting the keyboard into two *splits* is no longer used, with Zones being implemented solely on the Midihub. This gives us the flexibility to, for example, change the octave of each Zone independently, a feature the Rev2 does not provide.
 
-In practice, this means the `Split A|B` button on the device's panel continues to work as expected in what concerns the Synth's *layers*, but has no effect whatsoever on the keyboard. When the `Split A|B` button is lit, each layer continues to be addressable through `MIDI IN C`, on the channels you've previously [configured](setup.md#changing-the-rev2s-midi-channel). This is also the case when the `Stack A|B` button is lit.
+In practice, this means the `Split A|B` button on the device's panel continues to work as expected in what concerns the Synth's *layers*, but has no effect whatsoever on the keyboard. When the `Split A|B` button is lit, each layer continues to be addressable through `MIDI IN A`, on the channels you've previously [configured](setup.md#changing-the-rev2s-midi-channel). This is also the case when the `Stack A|B` button is lit.
 
 You can configure Zones through the [Control Plane](#control-plane).
 
@@ -67,15 +56,15 @@ When working with Rev2 patches which use both layers, `Multimode` must be enable
 ## NRPN
 The Rev2 must be set to send and receive NRPN instead of CC, i.e. both the `MIDI Param Send` and `MIDI Param Rcv` settings must be set to NRPN. See [here](rev2-limitations.md#lfo-and-other-parameters-not-sent-in-cc-mode) for why this is the case.
 
-This means, the Synth (`OUT C`) will output NRPN, and will only accept NRPN as input (`MIDI IN C`). This can be limiting when using the Rev2 with other gear, since most do not support NRPN. For example, you won't be able to automate the filter cutoff frequency with an external sequencer that does not support NRPN, which is the case with many sequencers.
+This means, the Synth (`OUT A`) will output NRPN, and will only accept NRPN as input (`MIDI IN A`). This can be limiting when using the Rev2 with other gear, since most do not support NRPN. For example, you won't be able to automate the filter cutoff frequency with an external sequencer that does not support NRPN, which is the case with many sequencers.
 
 However, there are [plans](https://community.blokas.io/t/convert-cc-to-nrpn/2359/2) to add NRPN-to-CC conversion to the Midihub, which would likely allow this limitation to be addressed.
 
 # Control Plane
-You can control various parameters of the Midihub's patch through MIDI CC messages sent to `MIDI IN A`. By default, **only messages sent on channel 16 are considered**, messages on any other channel are dropped. However, the channel can easily be changed through Midihub's editor.
+You can control various parameters of the Midihub's patch through MIDI CC messages sent to `MIDI IN A`, on channel 16.
 
 ## Zone A MIDI Channel (CC1)
-Set the MIDI Channel of messages produced by Zone A. Note this does **not** control the channel of the Synth's Layer A, that's still configurable through the Rev2's settings. Note that if you do change the channel the Rev2 operates on, will also need to adjust it accordingly in the Midihub's patch. 
+Set the MIDI Channel of messages produced by Zone A. Note this does **not** control the channel of the Synth's Layer A, that's still configurable through the Rev2's settings. If you do change the channel the Rev2 operates on, will also need to [adjust it accordingly in the Midihub's patch](how.md#set-the-midi-channel).
 
 Values of an initialized patch are indicated as **default**.
 
@@ -88,7 +77,7 @@ Values of an initialized patch are indicated as **default**.
 | 16 - 127  | 16                  ||
 
 ## Zone B MIDI Channel (CC2)
-Set the MIDI Channel of messages produced by Zone B.
+Set the MIDI Channel of messages produced by Zone B. Note this does **not** control the channel of the Synth's Layer B, that's still configurable through the Rev2's settings. If you do change the channel the Rev2 operates on, will also need to [adjust it accordingly in the Midihub's patch](how.md#set-the-midi-channel).
 
 Values of an initialized patch are indicated as **default**.
 
