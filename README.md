@@ -62,7 +62,7 @@ On an initialized patch, only zone A is enabled, and it occupies the totality of
 
 # Caveats
 ## Multimode
-When working with Rev2 patches which use both layers, `Multimode` must be enabled. Multimode splits voices between layers even when only layer A is active. Is this true?
+When working with Rev2 patches which use both layers, `Multimode` must be enabled. `Multimode` splits voices between layers even when only layer A is active. Is this true?
 
 ## NRPN
 The Rev2 must be set to send and receive NRPN instead of CC, i.e. both the `MIDI Param Send` and `MIDI Param Rcv` settings must be set to NRPN. See [here](rev2-limitations.md#lfo-and-other-parameters-not-sent-in-cc-mode) for why this is the case.
