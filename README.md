@@ -143,3 +143,12 @@ Values of an initialized patch are indicated as **default**.
 |:---------:|:-------------------:|-|
 | **0**     | **Zone B Disabled** |**default** |
 | 1 - 127   | Zone B Enabled      |
+
+## Request CC Dump (CC127)
+Requests a dump of all CCs. Upon receiving this message, for each of the CCs above (CC1, CC2, CC3, etc), one message will be output to `OUT A`, on channel 16, containing the current value of the respective CC.
+
+This is useful so an external MIDI controller can be "refreshed" to the internal state of the Midihub.
+
+| CC127 Value | CC Dump       |
+|:---------:|:---------------:|
+| 0 - 127   | All CCs are dumped |
