@@ -26,8 +26,8 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
     - Split the **Keyboard** into **zones A and B**, independently of the **Synth**'s layers.
     - Assign **Zones** to different MIDI channels, independently of the channels the **Synth** operates on.
     - Transpose each **Zone** independently, e.g. transpose Zone A by -2 octaves, and Zone B by +1 octave.
-- Fixes:
-    - When Local Control is `Off` and Multimode is `On`, using the Program and Bank knobs also [changes Layer B's preset](rev2-limitations.md#program-change-in-multimode).
+- Fixes Rev2 issues:
+    - When Local Control is `Off` and Multimode is `On`, using the Program and Bank knobs also changes Layer B's preset.
 
 ![Diagram](diagram.png "Diagram")
 
