@@ -1,15 +1,10 @@
 # Setup Instructions
-> This documentation is currently being improved.
+> Please follow all instruction in this document until the end.
 
-## Changing the Rev2's MIDI channel
-The Rev2's factory default for Layer A's MIDI channel is channel `1` (which implicitly sets Layer B's MIDI channel to `2`, when Multimode is `On`). We use the same default internally in the Midihub's patch.
+## Set Rev2's global settings
+The first thing to do is to make sure the Rev2's global settings are correctly set:
 
-If you wish to change this default, you must set the channel in the Rev2's global settings, and [edit the Midihub's patch](how.md#set-the-midi-channel) accordingly.
-
-## Rev2 Global Settings
-Set Rev2 global settings as follows:
-
-- MIDI Channel: 1
+- MIDI Channel: 1 (See also: [changing the Rev2's MIDI channel](#changing-the-rev2s-midi-channel))
 - MIDI Param Send: NRPN
 - MIDI Param Rcv: NRPN
 - MIDI Control: On
@@ -17,3 +12,41 @@ Set Rev2 global settings as follows:
 - MIDI Program Send: On
 - MIDI Out Select: MIDI
 - Local Control :Off
+
+## Connect MIDI cables
+The next step is to connect all the MIDI cables (see image below for a visual aid):
+
+- From Midihub's `OUT C` to Rev2's `IN`
+- From Rev2's `OUT` to Midihub's `IN C`
+- From Midihub's `OUT B` to Midihub's `IN B`.
+- From Midihub's `OUT A` to a MIDI interface or MIDI throughbox, depending on your setup.
+- (Optional) From a MIDI interface, sequencer, or MIDI controller's `OUT` to Midihub's `IN A`.
+
+![](diagram.png)
+
+## Install Midihub's editor
+You'll need the Midihub's Editor to install the patch. Download and install the editor for your operating system:
+
+- [Windows](https://blokas.io/midihub/downloads/latest/windows/)
+- [MacOS](https://blokas.io/midihub/downloads/latest/mac/)
+- [Linux](https://blokas.io/midihub/downloads/latest/linux/)
+- [Raspberry Pi](https://blokas.io/midihub/downloads/latest/linux_arm/)
+
+## Install Midihub's patch
+
+1. Download the [latest version of the patch](https://github.com/psrpinto/rev2-master-keyboard/releases), then extract the zipfile. In the extracted files you'll find a `midihub.mhp` file.
+2. Connect the Midihub to your computer through USB, and open the Midihub Editor that you installed in the previous step.
+3. Click the `Connect` button, then go to `File -> Open` and open `midihub.mhp` in the files extracted from the zip.
+4. Then click the button with the down arrow on top left of the Editor, and `Store to current preset` (or to whatever preset you wish).
+5. Click the `Disconnect` button
+6. (optional) Disconnect the Midihub from your computer.
+
+## Change the Rev2's MIDI channel
+> This is an optional step. If you wish to keep the Rev2 set to channels 1 and 2, skip this step.
+
+The Rev2's factory default for Layer A's MIDI channel is channel `1` (which implicitly sets Layer B's MIDI channel to `2`, when Multimode is `On`). We use the same default internally in the Midihub's patch.
+
+If you wish to change this default, you must set the channel in the Rev2's global settings, then edit the Midihub's patch accordingly.
+
+## Setup done!
+See [usage instructions](README.md#usage).
