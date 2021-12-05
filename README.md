@@ -27,7 +27,7 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
     - Assign **Zones** to different MIDI channels, independently of the channels the **Synth** operates on.
     - Transpose each **Zone** independently, e.g. transpose Zone A by -2 octaves, and Zone B by +1 octave.
 - Fixes Rev2 issues:
-    - When Local Control is `Off` and Multimode is `On`, using the Program and Bank knobs also changes Layer B's preset.
+    - When Local Control is `Off` and Multimode is `On`, using the Program and Bank knobs now also changes Layer B's preset.
 
 ![Diagram](diagram.png "Diagram")
 
