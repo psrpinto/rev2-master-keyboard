@@ -44,11 +44,11 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 # Zones
 The Keyboard can be split into two **Zones** (A and B), which are unrelated and operate completely independently of the Synth's *splits*. In fact, the Rev2's feature of splitting the keyboard into two *splits* is no longer used, with Zones being implemented solely on the Midihub. This gives us the flexibility to, for example, change the octave of each Zone independently, a feature the Rev2 does not provide.
 
-In practice, this means the `Split A|B` button on the device's panel continues to work as expected in what concerns the Synth's *layers*, but has no effect whatsoever on the keyboard. When the `Split A|B` button is lit, each layer continues to be addressable through `IN A`, on the channels you've previously [configured](setup.md#changing-the-rev2s-midi-channel) (assuming Multimode is `On`).
+In practice, this means the `Split A|B` button on the device's panel continues to work as expected in what concerns the Synth's *layers*, but has no effect whatsoever on the keyboard. When the `Split A|B` button is lit, each layer continues to be addressable through `IN A`, on the channels you've previously [configured](setup.md#change-the-rev2s-midi-channel) (assuming Multimode is `On`).
 
 You can configure Zones through the [Control Plane](#control-plane).
 
-On an initialized patch, only zone A is enabled, and it occupies the totality of the keyboard. Once zone B is [enabled](#zone-b-enabledisable-cc6), it occupies the right side of the keyboard, starting at the 3rd C note. Zone B's Start Key (i.e. the split point), can also be configured through the Control Plane.
+On an initialized patch, only zone A is enabled, and it occupies the totality of the keyboard. Once zone B is [enabled](#cc6-zone-b-enabledisable), it occupies the right side of the keyboard, starting at the 3rd C note. Zone B's Start Key (i.e. the split point), can also be configured through the Control Plane.
 
 # Caveats
 ## NRPN
@@ -70,7 +70,7 @@ You can control various parameters of the Midihub's patch through MIDI CC messag
 - [Request CC Dump](#cc127-request-cc-dump)
 
 ## CC1: Zone A MIDI Channel
-Set the MIDI Channel of messages produced by Zone A. Note this does **not** control the channel of the Synth's Layer A, that's still configurable through the Rev2's settings. If you do change the channel the Rev2 operates on, will also need to [adjust it accordingly in the Midihub's patch](setup.md#changing-the-rev2s-midi-channel).
+Set the MIDI Channel of messages produced by Zone A. Note this does **not** control the channel of the Synth's Layer A, that's still configurable through the Rev2's settings. If you do change the channel the Rev2 operates on, will also need to [adjust it accordingly in the Midihub's patch](setup.md#change-the-rev2s-midi-channel).
 
 Values of an initialized patch are indicated as **default**.
 
@@ -83,7 +83,7 @@ Values of an initialized patch are indicated as **default**.
 | 16 - 127  |         16          |             |
 
 ## CC2: Zone B MIDI Channel
-Set the MIDI Channel of messages produced by Zone B. Note this does **not** control the channel of the Synth's Layer B, that's still configurable through the Rev2's settings. If you do change the channel the Rev2 operates on, will also need to [adjust it accordingly in the Midihub's patch](setup.md#changing-the-rev2s-midi-channel).
+Set the MIDI Channel of messages produced by Zone B. Note this does **not** control the channel of the Synth's Layer B, that's still configurable through the Rev2's settings. If you do change the channel the Rev2 operates on, will also need to [adjust it accordingly in the Midihub's patch](setup.md#change-the-rev2s-midi-channel).
 
 Values of an initialized patch are indicated as **default**.
 
@@ -114,7 +114,7 @@ Values of an initialized patch are indicated as **default**. The *first-key note
 ## CC4: Zone B Octave
 Transpose Zone B up or down N octaves.
 
-Values of an initialized patch are indicated as **default**. *First-key note* is the note produced by the 1st key on the keyboard, starting from the left. Note than with an initialized patch, the first-key is on Layer A. You can use [CC5](#zone-b-start-key-cc5) to control where on the keyboard Zone B starts.
+Values of an initialized patch are indicated as **default**. *First-key note* is the note produced by the 1st key on the keyboard, starting from the left. Note than with an initialized patch, the first-key is on Layer A. You can use [CC5](#cc5-zone-b-start-key) to control where on the keyboard Zone B starts.
 
 | CC4 Value | Zone B Octave | First-key Note |             |
 |:---------:|:-------------:|:--------------:|-------------|
