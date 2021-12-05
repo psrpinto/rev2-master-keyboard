@@ -9,7 +9,6 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 ![Mood](mood.jpg "Mood")
 
 # Table of Contents
-1. [How it Works](how.md)
 1. [Features](#features)
 1. [Setup Instructions](setup.md)
 1. [Usage](#usage)
@@ -43,16 +42,13 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 # Zones
 The Keyboard can be split into two **Zones** (A and B), which are unrelated and operate completely independently of the Synth's *splits*. In fact, the Rev2's feature of splitting the keyboard into two *splits* is no longer used, with Zones being implemented solely on the Midihub. This gives us the flexibility to, for example, change the octave of each Zone independently, a feature the Rev2 does not provide.
 
-In practice, this means the `Split A|B` button on the device's panel continues to work as expected in what concerns the Synth's *layers*, but has no effect whatsoever on the keyboard. When the `Split A|B` button is lit, each layer continues to be addressable through `MIDI IN A`, on the channels you've previously [configured](setup.md#changing-the-rev2s-midi-channel). This is also the case when the `Stack A|B` button is lit.
+In practice, this means the `Split A|B` button on the device's panel continues to work as expected in what concerns the Synth's *layers*, but has no effect whatsoever on the keyboard. When the `Split A|B` button is lit, each layer continues to be addressable through `MIDI IN A`, on the channels you've previously [configured](setup.md#changing-the-rev2s-midi-channel) (assuming Multimode is `On`).
 
 You can configure Zones through the [Control Plane](#control-plane).
 
 On an initialized patch, only zone A is enabled, and it occupies the totality of the keyboard. Once zone B is [enabled](#zone-b-enabledisable-cc6), it occupies the right side of the keyboard, starting at the 3rd C note. Zone B's Start Key (i.e. the split point), can also be configured through the Control Plane.
 
 # Caveats
-## Multimode
-When working with Rev2 patches which use both layers, `Multimode` must be enabled. `Multimode` splits voices between layers even when only layer A is active. Is this true?
-
 ## NRPN
 The Rev2 must be set to send and receive NRPN instead of CC, i.e. both the `MIDI Param Send` and `MIDI Param Rcv` settings must be set to NRPN. See [here](rev2-limitations.md#lfo-and-other-parameters-not-sent-in-cc-mode) for why this is the case.
 
@@ -64,7 +60,7 @@ However, there are [plans](https://community.blokas.io/t/convert-cc-to-nrpn/2359
 You can control various parameters of the Midihub's patch through MIDI CC messages sent to `MIDI IN A`, on channel 16.
 
 ## Zone A MIDI Channel (CC1)
-Set the MIDI Channel of messages produced by Zone A. Note this does **not** control the channel of the Synth's Layer A, that's still configurable through the Rev2's settings. If you do change the channel the Rev2 operates on, will also need to [adjust it accordingly in the Midihub's patch](how.md#set-the-midi-channel).
+Set the MIDI Channel of messages produced by Zone A. Note this does **not** control the channel of the Synth's Layer A, that's still configurable through the Rev2's settings. If you do change the channel the Rev2 operates on, will also need to [adjust it accordingly in the Midihub's patch](setup.md#changing-the-rev2s-midi-channel).
 
 Values of an initialized patch are indicated as **default**.
 
@@ -77,7 +73,7 @@ Values of an initialized patch are indicated as **default**.
 | 16 - 127  | 16                  ||
 
 ## Zone B MIDI Channel (CC2)
-Set the MIDI Channel of messages produced by Zone B. Note this does **not** control the channel of the Synth's Layer B, that's still configurable through the Rev2's settings. If you do change the channel the Rev2 operates on, will also need to [adjust it accordingly in the Midihub's patch](how.md#set-the-midi-channel).
+Set the MIDI Channel of messages produced by Zone B. Note this does **not** control the channel of the Synth's Layer B, that's still configurable through the Rev2's settings. If you do change the channel the Rev2 operates on, will also need to [adjust it accordingly in the Midihub's patch](setup.md#changing-the-rev2s-midi-channel).
 
 Values of an initialized patch are indicated as **default**.
 
