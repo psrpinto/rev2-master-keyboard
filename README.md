@@ -59,92 +59,100 @@ However, there are [plans](https://community.blokas.io/t/convert-cc-to-nrpn/2359
 # Control Plane
 You can control various parameters of the Midihub's patch through MIDI CC messages sent to `MIDI IN A`, on channel 16.
 
-## Zone A MIDI Channel (CC1)
+- [Zone A MIDI Channel](#cc1-zone-a-midi-channel)
+- [Zone B MIDI Channel](#cc2-zone-b-midi-channel)
+- [Zone A Octave](#cc3-zone-a-octave)
+- [Zone B Octave](#cc4-zone-b-octave)
+- [Zone B Start Key](#cc5-zone-b-start-key)
+- [Zone B Enable/Disable](#cc6-zone-b-enabledisable)
+- [Request CC Dump](#cc127-request-cc-dump)
+
+## CC1: Zone A MIDI Channel
 Set the MIDI Channel of messages produced by Zone A. Note this does **not** control the channel of the Synth's Layer A, that's still configurable through the Rev2's settings. If you do change the channel the Rev2 operates on, will also need to [adjust it accordingly in the Midihub's patch](setup.md#changing-the-rev2s-midi-channel).
 
 Values of an initialized patch are indicated as **default**.
 
-| CC1 Value | Zone A MIDI Channel ||
-|:---------:|:-------------------:|-|
-| 0, **1**  | **1**               | **default** |
-| 2         | 2                   ||
-| 3         | 3                   ||
-| ...       | ...                 ||
-| 16 - 127  | 16                  ||
+| CC1 Value | Zone A MIDI Channel |             |
+|:---------:|:-------------------:|-------------|
+| 0, **1**  |        **1**        | **default** |
+|     2     |          2          |             |
+|     3     |          3          |             |
+|    ...    |         ...         |             |
+| 16 - 127  |         16          |             |
 
-## Zone B MIDI Channel (CC2)
+## CC2: Zone B MIDI Channel
 Set the MIDI Channel of messages produced by Zone B. Note this does **not** control the channel of the Synth's Layer B, that's still configurable through the Rev2's settings. If you do change the channel the Rev2 operates on, will also need to [adjust it accordingly in the Midihub's patch](setup.md#changing-the-rev2s-midi-channel).
 
 Values of an initialized patch are indicated as **default**.
 
-| CC2 Value | Zone B MIDI Channel ||
-|:---------:|:--------------------:|-|
-| 0, 1      | 1                   ||
-| **2**     | **2**               |**default**|
-| 3         | 3                   |
-| ...       | ...                 |
-| 16 - 127  | 16                  |
+| CC2 Value | Zone B MIDI Channel |             |
+|:---------:|:-------------------:|-------------|
+|   0, 1    |          1          |             |
+|   **2**   |        **2**        | **default** |
+|     3     |          3          |             |
+|    ...    |         ...         |             |
+| 16 - 127  |         16          |             |
 
-## Zone A Octave (CC3)
+## CC3: Zone A Octave
 Transpose Zone A up or down N octaves.
 
 Values of an initialized patch are indicated as **default**. The *first-key note* is the note produced by the 1st key on the keyboard, starting from the left.
 
-| CC3 Value | Zone A Octave | First-key Note ||
-|:---------:|:-------------:|:--------------:|-|
-| 0         | -3            | C-2            ||
-| 1         | -2            | C-1            ||
-| 2         | -1            | C0             ||
-| **3**     | **+0**        | **C1**         | **default** |
-| 4         | +1            | C2             |
-| 5         | +2            | C3             |
-| 6         | +3            | C4             |
-| 7 - 127   | +4            | C5             |
+| CC3 Value | Zone A Octave | First-key Note |             |
+|:---------:|:-------------:|:--------------:|-------------|
+|     0     |      -3       |      C-2       |             |
+|     1     |      -2       |      C-1       |             |
+|     2     |      -1       |       C0       |             |
+|   **3**   |    **+0**     |     **C1**     | **default** |
+|     4     |      +1       |       C2       |             |
+|     5     |      +2       |       C3       |             |
+|     6     |      +3       |       C4       |             |
+|  7 - 127  |      +4       |       C5       |             |
 
-## Zone B Octave (CC4)
+## CC4: Zone B Octave
 Transpose Zone B up or down N octaves.
 
 Values of an initialized patch are indicated as **default**. *First-key note* is the note produced by the 1st key on the keyboard, starting from the left. Note than with an initialized patch, the first-key is on Layer A. You can use [CC5](#zone-b-start-key-cc5) to control where on the keyboard Zone B starts.
 
-| CC4 Value | Zone B Octave | First-key Note ||
-|:---------:|:-------------:|:--------------:|-|
-| 0         | -3            | C-2            ||
-| 1         | -2            | C-1            ||
-| 2         | -1            | C0             ||
-| **3**     | **+0**        | **C1**         | **default** |
-| 4         | +1            | C2             |
-| 5         | +2            | C3             |
-| 6         | +3            | C4             |
-| 7 - 127   | +4            | C5             |
+| CC4 Value | Zone B Octave | First-key Note |             |
+|:---------:|:-------------:|:--------------:|-------------|
+|     0     |      -3       |      C-2       |             |
+|     1     |      -2       |      C-1       |             |
+|     2     |      -1       |       C0       |             |
+|   **3**   |    **+0**     |     **C1**     | **default** |
+|     4     |      +1       |       C2       |             |
+|     5     |      +2       |       C3       |             |
+|     6     |      +3       |       C4       |             |
+|  7 - 127  |      +4       |       C5       |             |
 
-## Zone B Start Key (CC5)
+## CC5: Zone B Start Key
 Set the key on the keyboard from which Zone B starts, inclusively. In other words, it's the split point between Zones A and B.
 
 Values of an initialized patch are indicated as **default**.
 
-| CC5 Value | Zone B Start Key  ||
-|:---------:|:-----------------:|-|
-| 0, 1      | 1st C             | *Zone A is disabled* |
-| 2         | 2nd C             ||
-| **3**     | **3rd C**         | **default** |
-| 4         | 4th C             |
-| 5 - 127   | 5th C             |
+| CC5 Value | Zone B Start Key |                      |
+|:---------:|:----------------:|----------------------|
+|   0, 1    |      1st C       | *Zone A is disabled* |
+|     2     |      2nd C       |                      |
+|   **3**   |    **3rd C**     | **default**          |
+|     4     |      4th C       |                      |
+|  5 - 127  |      5th C       |                      |
 
-## Zone B Enable/Disable (CC6)
+## CC6: Zone B Enable/Disable
 Enable or disable Zone B. When disabled, all keys on the keyboard are assigned to Zone A.
 
 Values of an initialized patch are indicated as **default**.
 
-| CC6 Value | Zone B status       ||
-|:---------:|:-------------------:|-|
-| **0**     | **Zone B Disabled** |**default** |
-| 1 - 127   | Zone B Enabled      |
+| CC6 Value |    Zone B status    |             |
+|:---------:|:-------------------:|-------------|
+|   **0**   | **Zone B Disabled** | **default** |
+|  1 - 127  |   Zone B Enabled    |             |
 
-## Request CC Dump (CC127)
+## CC127: Request CC Dump
 Requests a dump of all CCs. Upon receiving this message, for each of the CCs above (CC1, CC2, CC3, etc), one message will be output to `OUT A`, on channel 16, containing the current value of the respective CC.
 
 This is useful so an external MIDI controller can be "refreshed" to the internal state of the Midihub.
 
-| CC127 Value | CC Dump       |
-|:---------:|:---------------:|
-| 0 - 127   | All CCs are dumped |
+| CC127 Value |      CC Dump       |
+|:-----------:|:------------------:|
+|   0 - 127   | All CCs are dumped |

@@ -2,7 +2,7 @@
 > This documentation is currently being improved.
 
 ## Changing the Rev2's MIDI channel
-The Rev2's factory default for Layer A's MIDI channel is channel `1` (which implicitly sets Layer B's MIDI channel to `2`). We use the same default internally in the Midihub's patch.
+The Rev2's factory default for Layer A's MIDI channel is channel `1` (which implicitly sets Layer B's MIDI channel to `2`, when Multimode is `On`). We use the same default internally in the Midihub's patch.
 
 If you wish to change this default, you must set the channel in the Rev2's global settings, and [edit the Midihub's patch](how.md#set-the-midi-channel) accordingly.
 
