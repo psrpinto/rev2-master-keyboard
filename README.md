@@ -19,13 +19,15 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 
 # Features
 
-- Split MIDI related to the **Keyboard** into its own MIDI channel, independent of the **Synth**'s channel
-- [**Control**](#control-plane) the **Keyboard**'s MIDI channel, [**Zones**](#zones) and other parameters through MIDI CC
-- **Knobs** operate as if `Local control` would be `On`, i.e. they control the **Synth**
+- Split MIDI related to the **Keyboard** into its own MIDI channel, independent of the **Synth**'s channel.
+- [**Control**](#control-plane) the **Keyboard**'s MIDI channel, [**Zones**](#zones) and other parameters through MIDI CC.
+- **Knobs** operate as if `Local control` would be `On`, i.e. they control the **Synth** and also trigger MIDI messages.
 - [**Zones**](#zones)
-    - Split the **Keyboard** into **zones A and B**, independently of the **Synth**'s layers
-    - Assign **Zones** to different MIDI channels, independently of the channels the **Synth** operates on
-    - Transpose each **Zone** independently, e.g. transpose Zone A by -2 octaves, and Zone B by +1 octave
+    - Split the **Keyboard** into **zones A and B**, independently of the **Synth**'s layers.
+    - Assign **Zones** to different MIDI channels, independently of the channels the **Synth** operates on.
+    - Transpose each **Zone** independently, e.g. transpose Zone A by -2 octaves, and Zone B by +1 octave.
+- Fixes:
+    - When Local Control is `Off` and Multimode is `On`, using the Program and Bank knobs also [changes Layer B's preset](rev2-limitations.md#program-change-in-multimode).
 
 ![Diagram](diagram.png "Diagram")
 
