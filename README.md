@@ -169,3 +169,6 @@ With `Local Control` set to `Off` and `MIDI Param Send` set to `CC`, for many of
 
 ### Program Change in Multimode
 With `Local Control` set to `Off`, and `Multimode` set to `On`, Program Change messages triggered by the Program and Bank knobs are only sent to Layer A's MIDI channel, i.e. they aren't duplicated to Layer B's MIDI channel. In a setting where these messages are re-routed back to the Rev2, this causes Layer A's Program to change, while Layer B's Program remains unchanged.
+
+## Contributing
+If you use this project and have any issues with it, or have any kind of feedback, please consider [opening an issue](https://github.com/psrpinto/rev2-master-keyboard/issues/new).
