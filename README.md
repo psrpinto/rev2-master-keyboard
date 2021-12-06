@@ -1,6 +1,6 @@
 # rev2-master-keyboard
 
-The [Prophet Rev2](https://www.sequential.com/product/prophetrev2/) is a polyphonic analog synthesizer, paired with a 5-octave keyboard. It also has modulation and pitch wheels, and inputs for expression and sustain pedals. For these reasons, it's a common scenario to use it to control other devices, via MIDI. However, since it wasn't designed to be used as master MIDI keyboard, it falls short in a [variety of ways](#rev2-limitations).
+The [Prophet Rev2](https://www.sequential.com/product/prophetrev2/) is a polyphonic analog synthesizer, paired with a 5-octave keyboard, with modulation and pitch wheels, and inputs for expression and sustain pedals. For these reasons, it's a common scenario to use it to control other devices, via MIDI. However, since it wasn't designed to be used as master MIDI keyboard, it falls short in a [variety of ways](#rev2-limitations).
 
 Using a [Midihub](https://blokas.io/midihub), this project works around these limitations, so that the Rev2 can be used as a **master MIDI keyboard**.
 
@@ -23,9 +23,9 @@ Using a [Midihub](https://blokas.io/midihub), this project works around these li
 ![Diagram](diagram.png "Diagram")
 
 ## Usage
-Once you have followed the [Setup Instructions](setup.md), you can think of the Rev2 as two independent devices: a Synth and a Keyboard. Both are accessible through Midihub's `IN A` and `OUT A` but on different channels. The Synth operates on the channels you've configured during setup (1 and 2 by default), and the Keyboard operates on an assignable channel, from 1 to 16.
+Once you have followed the [Setup Instructions](setup.md), you can think of the Rev2 as two independent devices: a Synth and a Keyboard. Both are accessible through Midihub's `IN A` and `OUT A` but on separate channels. The Synth operates on the channels you've configured during setup (1 and 2 by default), and the Keyboard operates on an assignable channel, from 1 to 16.
 
-You assign the channel the Keyboard operates on through MIDI CC messages sent to `IN A`, on channel 16. To do this, you can use any device capable of sending MIDI CC, e.g. a computer or a MIDI controller like the one in the picture above ([Faderfox EC4](http://faderfox.de/ec4.html)). See [Control Plane](#control-plane) for more information about this, and a list of all parameters you can control.
+You set the Keyboard's channel through MIDI CC messages sent to `IN A`, on channel 16. To do this, you can use any device capable of sending MIDI CC, e.g. a computer, a MIDI sequencer, or a MIDI controller like the one in the picture above ([Faderfox EC4](http://faderfox.de/ec4.html)). See [Control Plane](#control-plane) for a list of all parameters you can control.
 
 The Keyboard outputs the following types of messages, on the assigned channel:
 
@@ -38,7 +38,7 @@ The Keyboard outputs the following types of messages, on the assigned channel:
 
 Additionally, when you turn a knob in the Rev2, it is immediately reflected in the sound (as if Local Control would be `On`), **and** [NRPN](#nrpn) messages are sent through `OUT A`. You can also send clock, transport, NRPN or any other MIDI message to the Rev2, through `IN A` on the channels you've configured (1 and 2 by default).
 
-Note that the Midhub keeps its memory across power cycles. For example, if you set the Keyboard's MIDI channel to 7, then turn the Midihub off and back on, the Keyboard's MIDI channel will still be set to 7.
+Note that the Midhub keeps its memory across power cycles. If, for example, you set the Keyboard's MIDI channel to 7, then turn the Midihub off and back on, the Keyboard's MIDI channel will still be set to 7.
 
 ## Zones
 You can split the Keyboard into two **Zones** (A and B), which are unrelated and operate independently of the Synth's *splits*. In fact, the Rev2's feature of splitting the keyboard into two *splits* is no longer used, with Zones being implemented solely on the Midihub. This gives us the flexibility to, for example, change the octave of each Zone independently, a feature the Rev2 does not provide.
