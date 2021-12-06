@@ -159,7 +159,7 @@ This is useful so an external MIDI controller can be "refreshed" to the internal
 |   0 - 127   | All CCs are dumped |
 
 ## Rev2 limitations
-This document lists some of Rev2's limitations, some of which this project addresses.
+This section lists some of Rev2's limitations, some of which this project addresses.
 
 ### No hybrid Local Control mode
 It's not possible to have the knobs control the device, while the keyboard just sends MIDI. If it would, this project would probably not need to exist, or its scope would be significantly reduced.
