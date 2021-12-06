@@ -1,5 +1,5 @@
 # Setup Instructions
-> Please follow all instruction in this document until the end.
+> Make sure you follow all instructions in this document, until the end.
 
 ## Set Rev2's global settings
 The first thing to do is to make sure the Rev2's global settings are correctly set:
@@ -19,7 +19,7 @@ The next step is to connect all the MIDI cables (see image below for a visual ai
 - From Midihub's `OUT C` to Rev2's `IN`
 - From Rev2's `OUT` to Midihub's `IN C`
 - From Midihub's `OUT B` to Midihub's `IN B`.
-- From Midihub's `OUT A` to a MIDI interface or MIDI throughbox, depending on your setup.
+- From Midihub's `OUT A` to a MIDI interface or MIDI thru box, depending on your setup.
 - (Optional) From a MIDI interface, sequencer, or MIDI controller's `OUT` to Midihub's `IN A`.
 
 ![](diagram.png)
