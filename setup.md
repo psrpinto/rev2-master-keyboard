@@ -25,7 +25,7 @@ The next step is to connect all the MIDI cables (see image below for a visual ai
 ![](diagram.png)
 
 ## Install Midihub's editor
-You'll need the Midihub's Editor to install the patch. Download and install the editor for your operating system:
+You'll need the Midihub Editor to install the patch. Download and install the editor for your operating system:
 
 - [Windows](https://blokas.io/midihub/downloads/latest/windows/)
 - [MacOS](https://blokas.io/midihub/downloads/latest/mac/)
@@ -34,12 +34,14 @@ You'll need the Midihub's Editor to install the patch. Download and install the 
 
 ## Install Midihub's patch
 
-1. Download the [latest version of the patch](https://github.com/psrpinto/rev2-master-keyboard/releases), then extract the zipfile.
-2. Connect the Midihub to your computer through USB, and open the Midihub Editor that you installed in the previous step.
-3. Click the `Connect` button, then go to `File -> Open` and open `midihub-rev2.mhp` in the files extracted from the zip.
-4. Then click the button with the down arrow on top left of the Editor, and `Store to current preset` (or to whatever preset you wish).
-5. Click the `Disconnect` button
-6. (optional) Disconnect the Midihub from your computer.
+1. Connect the Midihub to your computer through USB, and open the Midihub Editor that you installed in the previous step.
+2. Click the `Connect` button to connect the Editor to the Midihub.
+3. In the `View` menu, make sure `Patchstorage` is enabled.
+4. In the `Patchstorage` panel, search for `rev2` and locate the `REV2 MASTER KEYBOARD` patch
+5. Double-click it, then click `Append`
+6. Click the button with the down arrow on top left of the Editor, and `Store to current preset` (or to whatever preset you wish).
+7. Click the `Disconnect` button
+8. (optional) Disconnect the Midihub from your computer.
 
 ## Change the Rev2's MIDI channel
 > This is an optional step. If you wish to keep the Rev2 set to channels 1 and 2, skip this step.
