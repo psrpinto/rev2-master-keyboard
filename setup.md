@@ -4,7 +4,7 @@
 ## Set Rev2's global settings
 The first thing to do is to make sure the Rev2's global settings are correctly set:
 
-- MIDI Channel: 1 (See also: [changing the Rev2's MIDI channel](#changing-the-rev2s-midi-channel))
+- MIDI Channel: 1 (See also: [Change the Rev2's MIDI channel](#change-the-rev2s-midi-channel))
 - MIDI Param Send: NRPN
 - MIDI Param Rcv: NRPN
 - MIDI Control: On
@@ -46,20 +46,11 @@ You'll need the Midihub Editor to install the patch. Download and install the ed
 ## Change the Rev2's MIDI channel
 > This is an optional step. If you wish to keep the Rev2 set to channels 1 and 2, skip this step.
 
-The Rev2's factory default for Layer A's MIDI channel is channel `1` (which implicitly sets Layer B's MIDI channel to `2`, when Multimode is `On`). We use the same default internally in the Midihub's patch. If you wish to change this default, you must set the channel in the Rev2's global settings, then edit the Midihub's patch accordingly.
+The Rev2's factory default for Layer A's MIDI channel is channel `1` (which implicitly sets Layer B's MIDI channel to `2`, when Multimode is `On`). We use the same default in the Midihub's patch. If you wish to change this default, you must set the channel in the Rev2's global settings, then edit the Midihub's patch accordingly.
 
-You'll need to change the patch in two places.
+Locate the following _pipe_, then click the `TRANSFORM` block, and set the `Set Channel To` field to **the Layer B's channel**, e.g, if you set the channel in the Rev2's Global Settings to 7, this should be set to 8.
 
-Locate the following _pipe_, then click the `CH FILTER` block, and make it so that only the Rev2's channel is **not** selected. E.g, if you set the channel in the Rev2's Global Settings to be 7, all channels but 7 should be selected.
-
-![](patch-point-1.png)
-
-Then locate the following pipe, click the `CH REMAP` block, and make it so that:
-
-- `In Low` and `In High` are set to the Rev2's channel (e.g. 7 from the example above)
-- `Out Low` and `Out High` are set to one channel above the Rev2's (e.g. 8)
-
-![](patch-point-2.png)
+![](patch-point.png)
 
 ## Setup done!
 See [usage instructions](README.md#usage).

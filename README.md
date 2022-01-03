@@ -32,11 +32,13 @@ The Keyboard outputs the following types of messages, on the assigned channel:
 - Note On/Off
 - Channel Pressure (aka Aftertouch)
 - Pitch Bend
-- Modulation wheel (CC1)
-- Expression pedal (CC11)
-- Sustain pedal (CC64)
+- Modulation Wheel (CC1)
+- Expression Pedal (CC11)
+- Sustain Pedal (CC64)
 
-Additionally, when you turn a knob in the Rev2, it is immediately reflected in the sound (as if Local Control would be `On`), **and** [NRPN](#nrpn) messages are sent through `OUT A`. You can also send clock, transport, NRPN or any other MIDI message to the Rev2, through `IN A` on the channels you've configured (1 and 2 by default).
+You can also optionally assign the Expression Controls (Channel Pressure, Pitch Bend, Modulation Wheel, Expression Pedal and Sustain Pedal) to a different channel than Note On/Off messages.
+
+When you turn a knob in the Rev2, it is immediately reflected in the sound (as if Local Control would be `On`), **and** [NRPN](#nrpn) messages are sent through `OUT A`. You can also send clock, transport, NRPN or any other MIDI message to the Rev2, through `IN A` on the channels you've configured (1 and 2 by default).
 
 Note that the Midhub keeps its memory across power cycles. If, for example, you set the Keyboard's MIDI channel to 7, then turn the Midihub off and back on, the Keyboard's MIDI channel will still be set to 7.
 
@@ -66,6 +68,7 @@ You can control various parameters of the Midihub's patch through MIDI CC messag
 - [Zone B Octave](#cc4-zone-b-octave)
 - [Zone B Start Key](#cc5-zone-b-start-key)
 - [Zone B Enable/Disable](#cc6-zone-b-enabledisable)
+- [Expression Controls MIDI Channel](#cc7-expression-controls-midi-channel)
 - [Request CC Dump](#cc127-request-cc-dump)
 
 ### CC1: Zone A MIDI Channel
@@ -131,7 +134,6 @@ Set the key on the keyboard from which Zone B starts, inclusively.
 
 > In other words, the split point between Zones A and B.
 
-
 | CC5 Value | Zone B Start Key |                                   |
 |:---------:|:----------------:|-----------------------------------|
 |   0, 1    |      1st C       | *Zone B occupies entire keyboard* |
@@ -149,6 +151,18 @@ Enable or disable Zone B.
 |:---------:|:-------------------:|-------------|
 |   **0**   | **Zone B Disabled** | **default** |
 |  1 - 127  |   Zone B Enabled    |             |
+
+### CC7: Expression Controls MIDI channel
+Set the MIDI Channel of Channel Pressure, Modwheel, Pitchbend, Expression Pedal and Sustain Pedal.
+
+| CC7 Value | Expression Controls MIDI Channel |             |
+|:---------:|:--------------------------------:|-------------|
+|   **0**   | **Same channel as Zone A notes** | **default** |
+|     1     |                1                 |             |
+|     2     |                2                 |             |
+|     3     |                3                 |             |
+|    ...    |               ...                |             |
+| 16 - 127  |                16                |             |
 
 ### CC127: Request CC Dump
 Requests a dump of all CCs.
