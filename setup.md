@@ -48,7 +48,7 @@ You'll need the Midihub Editor to install the patch. Download and install the ed
 
 The Rev2's factory default for Layer A's MIDI channel is channel `1` (which implicitly sets Layer B's MIDI channel to `2`, when Multimode is `On`). We use the same default in the Midihub's patch. If you wish to change this default, you must set the channel in the Rev2's global settings, then edit the Midihub's patch accordingly.
 
-Locate the following _pipe_, then click the `TRANSFORM` block, and set the `Set Channel To` field to **the Layer B's channel**, e.g, if you set the channel in the Rev2's Global Settings to 7, this should be set to 8.
+Locate the following _pipe_, and set the `Set Channel To` field of **both** `TRANSFORM` blocks to **the Layer B's channel**, e.g, if you set the channel in the Rev2's Global Settings to 7, this should be set to 8.
 
 ![](patch-point.png)
 
